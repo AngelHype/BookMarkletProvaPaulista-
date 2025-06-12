@@ -1,17 +1,14 @@
-# 💬 Bookmarklet - Chat Flutuante com Gemini API
+# 📚 𝐅𝐮𝐜𝐤 𝐚𝐫𝐨𝐮𝐧𝐝 𝐚𝐧𝐝 𝐟𝐢𝐧𝐝 𝐨𝐮𝐭 - 🖕𝐇𝐨𝐫𝐫𝐨𝐫𝐢𝐧𝐚🖕
 
-Um bookmarklet feito para criar um mini chat flutuante estiloso no seu navegador, com integração à API Gemini da Google. Basta adicionar o link aos favoritos e conversar com a IA direto de qualquer página!
+## Versão totalmente teste que provavelmente não vai ser continuada por não ser gratuita! ##
 
-> 🔐 Use com moderação — esta versão utiliza uma chave pública que pode expirar ou ser limitada.
+Este é um bookmarklet — um pequeno script que você adiciona como favorito no navegador — que cria um chat flutuante na sua tela com integração a inteligência artificial.
 
-## ✅ Como usar
-
-1. Copie o link abaixo completo.
-2. Crie um novo favorito no navegador.
-3. Cole o link no campo de URL do favorito.
-4. Clique no favorito em qualquer site para abrir o chat.
-
-## 🌐 Bookmarklet
+ Feito com ajuda das IAs ChatGPT e Gemini
+ Inspirado no estilo e praticidade do projeto HCK - Hackermoon
+📌 Clique com o botão direito na barra de favoritos do seu navegador e escolha "Adicionar página".  
+Cole o código abaixo no campo de URL/endereço:
 
 ```javascript
-javascript:(function(){/* Compactado, veja o arquivo bookmarklet.txt */})();
+javascript:(function(){if(document.getElementById('angelChatBox'))return;const e=document.createElement("div");e.id="angelChatBox";e.style=`position:fixed;bottom:20px;right:20px;width:280px;height:400px;background:#1a1a1a;border-radius:12px;box-shadow:0 0 20px rgba(255,0,200,0.3);z-index:9999;display:flex;flex-direction:column;font-family:sans-serif;overflow:hidden;animation:fadeIn 0.3s ease-in-out;border:1px solid #ff66cc;color:#f9f9f9;transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;`;e.innerHTML=`<style>@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}@keyframes rgbText{0%{color:#ff66cc;}25%{color:#66ccff;}50%{color:#99ff66;}75%{color:#ffcc66;}100%{color:#ff66cc;}}#angelChatBox button:hover{background:#ff99dd;}#angelChatBox.collapsed{width:60px !important;height:40px !important;opacity:0.8;}#angelChatBox.collapsed #iaMessages,#angelChatBox.collapsed #iaForm,#angelChatBox.collapsed div[style*="Alpha V0.10"]{display:none !important;}#angelChatBox.collapsed > div:first-child{border-radius:12px !important;cursor:pointer;user-select:none;padding:12px;text-align:center;font-weight:bold;}</style><div style="background:#111;padding:12px;font-weight:bold;text-align:center;border-top-left-radius:12px;border-top-right-radius:12px;animation:rgbText 3s infinite;" id="angelHeader">Bookmarklet by AngelHype</div><div id="iaMessages" style="flex:1;padding:10px;overflow-y:auto;font-size:14px;"></div><form id="iaForm" style="display:flex;border-top:1px solid #444;"><input type="text" id="iaInput" placeholder="Digite sua pergunta..." style="flex:1;border:none;padding:10px;background:#2a2a2a;color:#fff;border-right:1px solid #444;" /><button type="submit" style="border:none;background:#ff66cc;color:white;padding:0 15px;border-bottom-right-radius:12px;">➤</button></form><div style="text-align:center;font-size:11px;padding:6px;color:#888;">Alpha V0.10 | by AngelHype</div>`;document.body.appendChild(e);const t=document.getElementById("iaForm"),n=document.getElementById("iaInput"),a=document.getElementById("iaMessages"),angelBox=document.getElementById("angelChatBox"),angelHeader=document.getElementById("angelHeader");t.addEventListener("submit",async r=>{r.preventDefault();const o=n.value.trim();if(!o)return;a.innerHTML+=`<div style="margin-bottom:6px;"><b>Você:</b> ${o}</div>`;n.value="";a.scrollTop=a.scrollHeight;a.innerHTML+=`<div id="iaLoading" style="color:#888;font-style:italic;">Pensando...</div>`;try{const s=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyDH4P6l98MFPWnThLKiRZba3MkcFP4nMvE`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts:[{text:o}]}]})});if(!s.ok){const errorText=await s.text();throw new Error(`HTTP ${s.status}: ${errorText}`);}const d=await s.json();document.getElementById("iaLoading").remove();if(d.candidates&&d.candidates.length>0&&d.candidates[0].content&&d.candidates[0].content.parts&&d.candidates[0].content.parts.length>0){a.innerHTML+=`<div style="margin-bottom:6px;"><b>IA:</b> ${d.candidates[0].content.parts[0].text}</div>`;}else{a.innerHTML+=`<div style="color:red;">Resposta inesperada da API.</div>`;console.log("Resposta da API:",d);}}catch(c){document.getElementById("iaLoading").remove();a.innerHTML+=`<div style="color:red;">Erro ao se comunicar com a IA:<br>${c.message}</div>`;console.error("Erro:",c);}a.scrollTop=a.scrollHeight;});function toggleChat(){if(angelBox.classList.contains('collapsed')){angelBox.classList.remove('collapsed');}else{angelBox.classList.add('collapsed');}}window.addEventListener('keydown',function(event){if(event.key==='1'){toggleChat();}});angelHeader.style.cursor='pointer';angelHeader.addEventListener('click',toggleChat);})();
+
