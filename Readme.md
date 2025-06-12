@@ -1,6 +1,7 @@
 # 📚 𝐅𝐮𝐜𝐤 𝐚𝐫𝐨𝐮𝐧𝐝 𝐚𝐧𝐝 𝐟𝐢𝐧𝐝 𝐨𝐮𝐭 - 🖕𝐇𝐨𝐫𝐫𝐨𝐫𝐢𝐧𝐚🖕
 
 ## Versão totalmente teste que provavelmente não vai ser continuada por não ser gratuita! ##
+(aperte 1 para fechar e abrir o menu)
 
 Este é um bookmarklet — um pequeno script que você adiciona como favorito no navegador — que cria um chat flutuante na sua tela com integração a inteligência artificial.
 
